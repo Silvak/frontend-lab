@@ -25,8 +25,9 @@ WORKDIR /app
 # Variable de entorno para producción
 ENV NODE_ENV=production
 
-# Copia package.json desde el builder
+# Copia package.json y package-lock.json desde el builder
 COPY --from=builder /app/package.json ./
+COPY --from=builder /app/package-lock.json* ./
 
 # Instala todas las dependencias (vite está en devDependencies pero es necesario para vite preview)
 RUN npm install --no-audit --no-fund
