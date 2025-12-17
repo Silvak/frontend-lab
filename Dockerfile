@@ -22,15 +22,16 @@ FROM node:20-alpine AS runner
 # Establece directorio de trabajo
 WORKDIR /app
 
-# Variable de entorno para producción
-ENV NODE_ENV=production
-
 # Copia package.json y package-lock.json desde el builder
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/package-lock.json* ./
 
-# Instala todas las dependencias (vite está en devDependencies pero es necesario para vite preview)
-RUN npm install --no-audit --no-fund
+# Instala todas las dependencias incluyendo devDependencies (vite está en devDependencies pero es necesario para vite preview)
+# Importante: NODE_ENV no debe estar en production antes de instalar, para que se instalen las devDependencies
+RUN npm install --include=dev --no-audit --no-fund
+
+# Variable de entorno para producción (después de instalar dependencias)
+ENV NODE_ENV=production
 
 # Copia los archivos generados del build
 COPY --from=builder /app/dist ./dist
