@@ -3,3 +3,5 @@ services:
     container_name: frontend
     build: .
     restart: unless-stopped
+    environment:
+      - NODE_ENV=production
