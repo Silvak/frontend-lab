@@ -3,7 +3,7 @@ import { FaLinkedin } from "react-icons/fa6"
 import { SiGithub } from "react-icons/si"
 
 import { Button } from "@/components/ui/button"
-import { links } from "@/data/cv"
+import { identity, links } from "@/data/cv"
 
 export function SiteFooter() {
   const year = new Date().getFullYear()
@@ -46,13 +46,13 @@ export function SiteFooter() {
         <Button asChild variant="outline">
           <a href={`mailto:${links.email}`}>
             <Mail className="size-4" aria-hidden />
-            Email
+            Correo
           </a>
         </Button>
       </div>
 
       <p className="max-w-xl text-xs leading-relaxed text-muted-foreground">
-        © {year} Jesus Silva. Todos los derechos reservados.
+        © {year} {identity.name}. Todos los derechos reservados.
       </p>
     </footer>
   )

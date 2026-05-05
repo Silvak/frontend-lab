@@ -8,11 +8,17 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
 import { Separator } from "@/components/ui/separator"
-import { aboutBody, aboutIntro, valueProps } from "@/data/cv"
+import {
+  aboutClosingParagraph,
+  aboutContributionBullets,
+  aboutContributionsHeading,
+  aboutSummaryParagraphs,
+} from "@/data/cv"
 
 export function AboutSection() {
   const [open, setOpen] = useState(false)
   const contentId = useId()
+  const [intro, ...restSummary] = aboutSummaryParagraphs
 
   return (
     <section
@@ -33,30 +39,36 @@ export function AboutSection() {
       </div>
 
       <p className="max-w-2xl text-sm leading-relaxed text-foreground/90">
-        {aboutIntro}
+        {intro}
       </p>
 
       <Collapsible open={open} onOpenChange={setOpen}>
         <CollapsibleContent id={contentId} className="overflow-hidden">
-          <div className="space-y-4 pt-2 pb-4">
-            {aboutBody.map((paragraph) => (
-              <p
-                key={paragraph.slice(0, 40)}
-                className="max-w-2xl text-sm leading-relaxed text-muted-foreground"
-              >
+          <div className="max-w-2xl space-y-4 pt-2 pb-4 text-sm leading-relaxed">
+            {restSummary.map((paragraph) => (
+              <p key={paragraph.slice(0, 48)} className="text-foreground/90">
                 {paragraph}
               </p>
             ))}
-            <ul className="max-w-2xl space-y-3 text-sm text-muted-foreground">
-              {valueProps.map((item) => (
-                <li key={item.title} className="leading-relaxed">
-                  <span className="font-medium text-foreground">
-                    {item.title}:{" "}
+            <p className="font-medium text-foreground">
+              {aboutContributionsHeading}
+            </p>
+            <ul className="list-none space-y-3 text-muted-foreground">
+              {aboutContributionBullets.map((item) => (
+                <li key={item.title} className="flex gap-2">
+                  <span className="shrink-0" aria-hidden>
+                    ●
                   </span>
-                  {item.text}
+                  <span>
+                    <span className="font-medium text-foreground">
+                      {item.title}:{" "}
+                    </span>
+                    {item.text}
+                  </span>
                 </li>
               ))}
             </ul>
+            <p className="text-muted-foreground">{aboutClosingParagraph}</p>
           </div>
         </CollapsibleContent>
         <CollapsibleTrigger asChild>

@@ -16,41 +16,43 @@ export const heroBadges = [
 ] as const
 
 export const identity = {
-  name: "Jesus Silva",
+  name: "Jesús Silva",
   headline: "Frontend Engineer",
   focus: "React & TypeScript · UI Systems",
   currentRole: "Team Lead en Gravitad",
   location: "Venezuela",
   heroBlurb:
-    "Me interesa el trabajo remoto y equipos con cultura sana y transparente. Me apasiona el 3D en la web, las simulaciones y experimentar con Three.js.",
+    "Me interesa el trabajo remoto con una buena cultura de equipo. Me apasionan las simulaciones y crear experiencias 3D en la web.",
 } as const
 
-export const aboutIntro =
-  "Soy un Frontend Engineer (Mid-level) con más de 4 años de experiencia construyendo productos digitales. Actualmente, me desempeño como Team Lead en Gravitad, donde combino el desarrollo activo con la toma de decisiones técnicas para garantizar productos escalables y de alto rendimiento."
-
-export const aboutBody = [
+export const aboutSummaryParagraphs = [
+  "Soy un Frontend Engineer (Mid-level) con más de 4 años de experiencia construyendo productos digitales. Actualmente, me desempeño como Team Lead en Gravitad, donde combino el desarrollo activo con la toma de decisiones técnicas para garantizar productos escalables y de alto rendimiento.",
   "Enfocado en la eficiencia del desarrollo y la consistencia visual. He evolucionado desde la maquetación de interfaces hasta la gestión técnica integral, incluyendo infraestructuras con Docker y pipelines de CI/CD.",
-  "Actualmente estoy cursando la carrera de Ingeniería de Sistemas (2025-2028) para formalizar y profundizar mis conocimientos teóricos. Busco oportunidades remotas en equipos que valoren la calidad del código, la automatización y el crecimiento constante.",
-]
+] as const
 
-export const valueProps = [
+export const aboutContributionsHeading = "Lo que puedo aportar a tu equipo:" as const
+
+export const aboutContributionBullets = [
   {
-    title: "Dominio técnico",
-    text: "Desarrollo avanzado en React y TypeScript, con enfoque en componentes reutilizables y lógica de negocio eficiente.",
+    title: "Dominio Técnico",
+    text: "Desarrollo avanzado en React y TypeScript, con un enfoque en la creación de componentes reutilizables y lógica de negocio eficiente.",
   },
   {
-    title: "UI systems y tooling",
-    text: "Creador de Liminal-UI, librería de componentes headless con CLI personalizada para versionado y dependencias.",
+    title: "UI Systems & Tooling",
+    text: "Creador de Liminal-UI, una librería de componentes headless que incluye una CLI personalizada para automatizar el versionado y las dependencias.",
   },
   {
-    title: "Visión full stack pragmática",
-    text: "Node.js, Express y despliegues con Docker y Dokploy.",
+    title: "Visión FullStack Pragática",
+    text: "Manejo de Node.js, Express y despliegues en servidores mediante Docker y Dokploy.",
   },
   {
-    title: "IA aplicada",
-    text: "Integración de sistemas RAG para análisis documental con embeddings y bases vectoriales.",
+    title: "IA Aplicada",
+    text: "Experiencia integrando sistemas RAG para análisis documental mediante embeddings y bases vectoriales.",
   },
 ] as const
+
+export const aboutClosingParagraph =
+  "Actualmente estoy cursando la carrera de Ingeniería de Sistemas (2025-2028) para formalizar y profundizar mis conocimientos teóricos. Busco oportunidades remotas en equipos que valoren la calidad del código, la automatización y el crecimiento constante." as const
 
 export type ExperienceBullet = { text: string }
 
@@ -114,7 +116,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     id: "contractor-dev",
-    company: "Independent Contractor",
+    company: "Contratista independiente",
     employmentType: "Autónomo",
     location: "Estado Mérida, Venezuela",
     remote: true,
@@ -132,7 +134,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     id: "contractor-design",
-    company: "Independent Contractor",
+    company: "Contratista independiente",
     employmentType: "Autónomo",
     location: "Argentina",
     title: "Diseñador gráfico",
@@ -159,7 +161,7 @@ export const education = [
     degree: "Ingeniería de Sistemas",
     period: "ene. 2025 – dic. 2028",
     description:
-      "Consolidación de fundamentos para potenciar mi rol como arquitecto de software.",
+      "Refuerzo de bases de computación y diseño de software; complementa lo que ya hago llevando frontend e infra en el día a día.",
     tags: [] as string[],
   },
   {
@@ -179,7 +181,8 @@ export type Certification = {
   name: string
   issuer: string
   date: string
-  credentialUrl: string
+  /** Enlace directo al diploma o certificado; si falta, no se muestra CTA en la UI. */
+  credentialUrl?: string
   credentialId?: string
   issuerKind: IssuerKind
 }
@@ -187,10 +190,9 @@ export type Certification = {
 export const certifications: Certification[] = [
   {
     id: "li-arch",
-    name: "Arquitectura de software: patrones esencial",
+    name: "Arquitectura de software: patrones esenciales",
     issuer: "LinkedIn Learning",
     date: "jun. 2022",
-    credentialUrl: "https://www.linkedin.com/learning/",
     issuerKind: "linkedin",
   },
   {
@@ -198,16 +200,14 @@ export const certifications: Certification[] = [
     name: "Curso práctico de Frontend Developer",
     issuer: "Platzi",
     date: "ene. 2021",
-    credentialUrl: "https://platzi.com/p/",
     credentialId: "21ea4c1e-cff1-4e42-a4f1-6b6ea324c3b3",
     issuerKind: "platzi",
   },
   {
     id: "google-mobile",
-    name: "Development of mobile apps",
+    name: "Desarrollo de aplicaciones móviles",
     issuer: "Google Actívate",
     date: "jun. 2019",
-    credentialUrl: "https://skillshop.exceedlms.com/",
     credentialId: "FRQ ZHA LFC",
     issuerKind: "google",
   },
@@ -228,7 +228,7 @@ export const projects: ProjectEntry[] = [
     id: "liminal-ui",
     name: "liminal-ui",
     description:
-      "Sistema de diseño distribuido como código en el propio repositorio: componentes headless sobre Ark UI, tokens alineados con el ecosistema shadcn y una CLI que automatiza init, add y diff —pensado para equipos que quieren control total del UI kit sin depender de versiones opacas en node_modules.",
+      "UI kit que vive en tu repo: componentes headless con Ark UI, tokens tipo shadcn y una CLI para añadir piezas y ver diferencias. Lo uso cuando quiero dueñar el código del diseño, no solo consumirlo desde node_modules.",
     repoUrl: "https://github.com/Silvak/liminal-ui",
     demoUrl: "https://liminal-ui.silvak.dev",
     period: "2025 – actualidad",
@@ -238,7 +238,7 @@ export const projects: ProjectEntry[] = [
     id: "ghosttype",
     name: "ghosttype",
     description:
-      "Extensión de navegador orientada a la privacidad del autor: análisis e inferencia en local (WebGPU y Transformers.js) para visibilizar el riesgo estilométrico antes de publicar, con almacenamiento en IndexedDB y arquitectura explícitamente local-first, sin telemetría.",
+      "Extensión para revisar texto antes de publicar: corre modelos en local con WebGPU y Transformers.js y estima riesgo estilométrico. Todo en IndexedDB; sin telemetría.",
     repoUrl: "https://github.com/Silvak/ghosttype",
     period: "2026",
     stack: ["TypeScript", "React", "WXT", "Tailwind CSS"],
@@ -247,7 +247,7 @@ export const projects: ProjectEntry[] = [
     id: "proticket-front",
     name: "ProTicket-Front",
     description:
-      "Interfaz web de un producto de gestión de rifas, tickets y talonarios: flujos administrativos exigentes, estado global con Zustand, stack Vite + React + Tailwind y despliegue containerizado con Docker para entornos predecibles en producción.",
+      "Frontend de rifas, tickets y talonarios: flujos admin exigentes y estado con Zustand. Vite, React y Tailwind; Docker para que staging y producción se parezcan.",
     repoUrl: "https://github.com/Silvak/ProTicket-Front",
     period: "2021 – 2022",
     stack: ["TypeScript", "React", "Tailwind CSS", "Docker"],
@@ -256,7 +256,7 @@ export const projects: ProjectEntry[] = [
     id: "proticket-back",
     name: "ProTicket-Back",
     description:
-      "Backend del ecosistema Pro Ticket: API REST con Node, Express y TypeScript, reglas de negocio desacopladas de la capa HTTP, persistencia en MongoDB y empaquetado con Docker —diseñado para crecer de MVP a despliegues gestionados con contratos de API estables.",
+      "API REST con Node, Express y TypeScript; reglas de negocio fuera de los controladores. MongoDB abajo y Docker para empaquetar. Pensado para crecer desde un MVP sin romper contratos a quien consuma la API.",
     repoUrl: "https://github.com/Silvak/ProTicket-Back",
     period: "2021 – 2022",
     stack: ["TypeScript", "Node.js", "Express", "MongoDB"],
@@ -265,7 +265,7 @@ export const projects: ProjectEntry[] = [
     id: "zafir",
     name: "ZafirProjects-React",
     description:
-      "Aplicación de organización de proyectos y tareas: prioriza tableros claros y flujos operativos repetibles para equipos pequeños; construida con React y Material UI sobre una base JavaScript consolidada, orientada a iteración rápida en la interfaz.",
+      "Organización de proyectos y tareas para equipos pequeños: tableros simples y React + MUI sobre JavaScript. De 2021; prioricé iterar rápido en la interfaz.",
     repoUrl: "https://github.com/Silvak/ZafirProjects-React",
     period: "2021",
     stack: ["JavaScript", "React", "MUI"],

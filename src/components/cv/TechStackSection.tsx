@@ -55,8 +55,7 @@ export function TechStackSection() {
           Tecnologías
         </h2>
         <p className="text-sm text-muted-foreground">
-          Herramientas y stack que uso en entornos profesionales y en los que tengo
-          un dominio consolidado —desde producto frontend hasta tooling y despliegue.
+          Herramientas que utilizo en entornos de producción
         </p>
       </div>
 

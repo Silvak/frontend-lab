@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react"
+import { ExternalLink, Globe } from "lucide-react"
 import { SiGithub } from "react-icons/si"
 
 import { Badge } from "@/components/ui/badge"
@@ -29,7 +29,7 @@ export function ProjectsSection() {
           Proyectos
         </h2>
         <p className="text-sm text-muted-foreground">
-          Productos y librerías públicas donde aplico arquitectura, tooling y buenas prácticas —con código abierto en GitHub.
+          Proyectos públicos en GitHub, incluyendo demos o documentación.
         </p>
       </div>
 
@@ -67,8 +67,8 @@ export function ProjectsSection() {
                   ))}
                 </div>
               </CardContent>
-              <CardFooter className="flex flex-wrap items-center justify-center gap-2 border-t-0 pt-0">
-                <Button asChild variant="outline" size="sm">
+              <CardFooter className="flex w-full flex-wrap items-center justify-between gap-2 border-t-0 p-2.5">
+                <Button asChild variant="outline" size="sm" className="shrink-0">
                   <a
                     href={project.repoUrl}
                     target="_blank"
@@ -80,15 +80,20 @@ export function ProjectsSection() {
                   </a>
                 </Button>
                 {project.demoUrl ? (
-                  <Button asChild variant="ghost" size="sm">
+                  <Button
+                    asChild
+                    variant="secondary"
+                    size="sm"
+                    className="shrink-0"
+                  >
                     <a
                       href={project.demoUrl}
                       target="_blank"
                       rel="noreferrer noopener"
                       className="inline-flex items-center gap-1.5"
                     >
-                      Sitio / docs
-                      <ExternalLink className="size-3.5" aria-hidden />
+                      <Globe className="size-3.5" aria-hidden />
+                      Sitio web
                     </a>
                   </Button>
                 ) : null}

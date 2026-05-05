@@ -26,7 +26,7 @@ export function EducationSection() {
           id="education-heading"
           className="text-lg font-medium tracking-tight text-foreground"
         >
-          Educación y certificaciones
+          Educación
         </h2>
         <p className="text-sm text-muted-foreground">
           Formación académica y credenciales
@@ -93,17 +93,19 @@ export function EducationSection() {
                       ID: {cert.credentialId}
                     </p>
                   ) : null}
-                  <Button variant="link" className="h-auto p-0 text-sm" asChild>
-                    <a
-                      href={cert.credentialUrl}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="inline-flex items-center gap-1"
-                    >
-                      Ver credencial
-                      <ExternalLink className="size-3.5" aria-hidden />
-                    </a>
-                  </Button>
+                  {cert.credentialUrl ? (
+                    <Button variant="link" className="h-auto p-0 text-sm" asChild>
+                      <a
+                        href={cert.credentialUrl}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="inline-flex items-center gap-1"
+                      >
+                        Ver credencial
+                        <ExternalLink className="size-3.5" aria-hidden />
+                      </a>
+                    </Button>
+                  ) : null}
                 </CardContent>
               </Card>
             </li>
