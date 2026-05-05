@@ -42,7 +42,7 @@ export const aboutContributionBullets = [
     text: "Creador de Liminal-UI, una librería de componentes headless que incluye una CLI personalizada para automatizar el versionado y las dependencias.",
   },
   {
-    title: "Visión FullStack Pragática",
+    title: "Visión Full Stack Pragmática",
     text: "Manejo de Node.js, Express y despliegues en servidores mediante Docker y Dokploy.",
   },
   {
@@ -228,7 +228,7 @@ export const projects: ProjectEntry[] = [
     id: "liminal-ui",
     name: "liminal-ui",
     description:
-      "UI kit que vive en tu repo: componentes headless con Ark UI, tokens tipo shadcn y una CLI para añadir piezas y ver diferencias. Lo uso cuando quiero dueñar el código del diseño, no solo consumirlo desde node_modules.",
+      "UI kit que vive en tu repo: componentes headless con Ark UI, tokens tipo shadcn y una CLI para añadir piezas y ver diferencias. Lo uso cuando quiero ser dueño del código del diseño, no solo consumirlo desde node_modules.",
     repoUrl: "https://github.com/Silvak/liminal-ui",
     demoUrl: "https://liminal-ui.silvak.dev",
     period: "2025 – actualidad",
@@ -256,7 +256,7 @@ export const projects: ProjectEntry[] = [
     id: "proticket-back",
     name: "ProTicket-Back",
     description:
-      "API REST con Node, Express y TypeScript; reglas de negocio fuera de los controladores. MongoDB abajo y Docker para empaquetar. Pensado para crecer desde un MVP sin romper contratos a quien consuma la API.",
+      "API REST con Node, Express y TypeScript; reglas de negocio fuera de los controladores. MongoDB abajo y Docker para empaquetar. Pensado para crecer desde un MVP sin romper el contrato de la API para quienes la consumen.",
     repoUrl: "https://github.com/Silvak/ProTicket-Back",
     period: "2021 – 2022",
     stack: ["TypeScript", "Node.js", "Express", "MongoDB"],
