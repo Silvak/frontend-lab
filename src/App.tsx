@@ -1,10 +1,11 @@
 import { ThemeProvider } from "@/components/theme/ThemeProvider"
-import { CvPage } from "@/CvPage"
+import { RouterProvider } from "react-router-dom"
+import { router } from "./router"
 
 export default function App() {
   return (
     <ThemeProvider>
-      <CvPage />
+      <RouterProvider router={router} />
     </ThemeProvider>
   )
 }

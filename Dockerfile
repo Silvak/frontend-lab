@@ -1,34 +1,40 @@
 # Etapa 1: Build
 FROM node:20-alpine AS builder
 
+# Instala pnpm
+RUN npm install -g pnpm
+
 # Establece directorio de trabajo
 WORKDIR /app
 
-# Copia package.json y package-lock.json
-COPY package.json package-lock.json* ./
+# Copia package.json y pnpm-lock.yaml
+COPY package.json pnpm-lock.yaml* ./
 
 # Instala todas las dependencias (necesarias para el build)
-RUN npm install
+RUN pnpm install --frozen-lockfile
 
 # Copia el resto del código fuente
 COPY . .
 
 # Ejecuta el build de Vite
-RUN npm run build
+RUN pnpm run build
 
 # Etapa 2: Producción
 FROM node:20-alpine AS runner
 
+# Instala pnpm
+RUN npm install -g pnpm
+
 # Establece directorio de trabajo
 WORKDIR /app
 
-# Copia package.json y package-lock.json desde el builder
+# Copia package.json y pnpm-lock.yaml desde el builder
 COPY --from=builder /app/package.json ./
-COPY --from=builder /app/package-lock.json* ./
+COPY --from=builder /app/pnpm-lock.yaml* ./
 
-# Instala todas las dependencias incluyendo devDependencies (vite está en devDependencies pero es necesario para vite preview)
-# Importante: NODE_ENV no debe estar en production antes de instalar, para que se instalen las devDependencies
-RUN npm install --include=dev --no-audit --no-fund
+# Instala todas las dependencias incluyendo devDependencies
+# Importante: NODE_ENV no debe estar en production antes de instalar
+RUN pnpm install --frozen-lockfile
 
 # Variable de entorno para producción (después de instalar dependencias)
 ENV NODE_ENV=production
@@ -43,4 +49,4 @@ COPY --from=builder /app/vite.config.js* ./
 EXPOSE 3000
 
 # Comando de inicio
-CMD ["npm", "run", "start"]
+CMD ["pnpm", "run", "start"]
